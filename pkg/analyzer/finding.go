@@ -1,3 +1,4 @@
+// this package is for analyzing, takes a typed Kubernetes object and returns findings
 package analyzer
 
 import (
@@ -5,7 +6,7 @@ import (
 	"strings"
 )
 
-// Severity is used to tell how serious a finding is. Higher values mean its more sever
+// Severity is used to tell how serious a finding is. Higher values mean it is more sever
 type Severity int
 
 const (
@@ -31,7 +32,7 @@ func ParseSeverity(v string) (Severity, error) {
 			return Severity(i), nil
 		}
 	}
-	return 0, fmt.Errorf("Unknown severity %q (want one of %s)", v, strings.Join(severityNames[:], ","))
+	return 0, fmt.Errorf("unknown severity %q (want one of %s)", v, strings.Join(severityNames[:], ", "))
 }
 
 func (s Severity) MarshalText() ([]byte, error) {
